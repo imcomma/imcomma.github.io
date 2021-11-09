@@ -3,11 +3,11 @@
   <title>Comma</title>
   
   <subtitle>Comma</subtitle>
-  <link href="http://imcomma.github.io/atom.xml" rel="self"/>
+  <link href="http://imcomma.top/atom.xml" rel="self"/>
   
-  <link href="http://imcomma.github.io/"/>
+  <link href="http://imcomma.top/"/>
   <updated>2021-11-06T05:22:18.589Z</updated>
-  <id>http://imcomma.github.io/</id>
+  <id>http://imcomma.top/</id>
   
   <author>
     <name>Comma</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>我的第一篇博客</title>
-    <link href="http://imcomma.github.io/2021/11/06/wo-de-di-yi-pian-bo-ke/"/>
-    <id>http://imcomma.github.io/2021/11/06/wo-de-di-yi-pian-bo-ke/</id>
+    <link href="http://imcomma.top/2021/11/06/wo-de-di-yi-pian-bo-ke/"/>
+    <id>http://imcomma.top/2021/11/06/wo-de-di-yi-pian-bo-ke/</id>
     <published>2021-11-06T05:06:46.000Z</published>
     <updated>2021-11-06T05:22:18.589Z</updated>
     
@@ -38,14 +38,14 @@
     
     
     
-    <category term="搭建博客" scheme="http://imcomma.github.io/tags/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/"/>
+    <category term="搭建博客" scheme="http://imcomma.top/tags/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/"/>
     
   </entry>
   
   <entry>
     <title>Hello World</title>
-    <link href="http://imcomma.github.io/2021/11/05/hello-world/"/>
-    <id>http://imcomma.github.io/2021/11/05/hello-world/</id>
+    <link href="http://imcomma.top/2021/11/05/hello-world/"/>
+    <id>http://imcomma.top/2021/11/05/hello-world/</id>
     <published>2021-11-05T15:39:11.656Z</published>
     <updated>2021-11-05T15:39:11.657Z</updated>
     
