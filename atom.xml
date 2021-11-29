@@ -6,7 +6,7 @@
   <link href="http://imcomma.top/atom.xml" rel="self"/>
   
   <link href="http://imcomma.top/"/>
-  <updated>2021-11-11T23:14:24.018Z</updated>
+  <updated>2021-11-29T15:10:00.450Z</updated>
   <id>http://imcomma.top/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>C++零碎知识点小记</title>
+    <link href="http://imcomma.top/2021/11/29/c-ling-sui-zhi-shi-dian-xiao-ji/"/>
+    <id>http://imcomma.top/2021/11/29/c-ling-sui-zhi-shi-dian-xiao-ji/</id>
+    <published>2021-11-29T14:40:39.000Z</published>
+    <updated>2021-11-29T15:10:00.450Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="说点什么"><a href="#说点什么" class="headerlink" title="说点什么"></a>说点什么</h1><p>好久没更新博客了，不能闲置了。</p><p>每次打代码，修BUG都会有一些小收获，于是我就打算在这里记录我每次学到的零碎知识点。</p><p>本人表达能力有限，若有不当之处，欢迎指正。</p><h1 id="11月29日小记"><a href="#11月29日小记" class="headerlink" title="11月29日小记"></a>11月29日小记</h1><p>今晚在写哈夫曼树的编码解码的时候，遇到了个问题。</p><p>因为可能需要编码译码<strong>空格</strong>，而在C++中，空格通常会是个特殊的存在。</p><p>在输入字符的时候，我选择了getline()函数获取一行输入。（dev能正常使用，vs则需要引用<string>库）</string></p><p><em>以下是测试代码：</em></p><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;using namespace std;int main(){int n;string str;cin&gt;&gt;n;  //输入n个字符getline(cin,str); //getline(infile,str); getline还能对文件进行读行操作cout&lt;&lt;str[0]&lt;&lt;"."&lt;&lt;str[2]&lt;&lt;endl; cout&lt;&lt;str.length();return 0;}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>这段代码运行后会发现getline()并没有获取输入文本。</p><p>这是因为在C++中，使用cin读取数据后，再使用getline读字符串，发现缓冲区中还有endl，便进行读入操作，所以后面没能继续读入我们所需要的文本。</p><p>解决方法：在两者之间加入<code>cin.ignore();</code>，这样就能清空缓冲区了。</p><p><em>示例如下：</em></p><pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include &lt;iostream&gt;using namespace std;int main(){int n;string str;cin&gt;&gt;n;  //输入n个字符    cin.ignore(); //清空缓冲区，防止getline读取endlgetline(cin,str);cout&lt;&lt;str[0]&lt;&lt;"."&lt;&lt;str[2]&lt;&lt;endl; cout&lt;&lt;str.length();return 0;}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;说点什么&quot;&gt;&lt;a href=&quot;#说点什么&quot; class=&quot;headerlink&quot; title=&quot;说点什么&quot;&gt;&lt;/a&gt;说点什么&lt;/h1&gt;&lt;p&gt;好久没更新博客了，不能闲置了。&lt;/p&gt;
+&lt;p&gt;每次打代码，修BUG都会有一些小收获，于是我就打算在这里记录我每次学到的零碎知</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>尝试Markdown的基础语法</title>

@@ -9,7 +9,7 @@
     
     <title>
         
-            Archive: 2021/11 |
+            C++零碎知识点小记 |
         
         Comama&#39;s Blog
     </title>
@@ -79,7 +79,7 @@
                         </li>
                     
                         <li class="menu-item">
-                            <a class="active"
+                            <a class=""
                                href="/archives"
                             >
                                 ARCHIVES
@@ -129,7 +129,7 @@
                 </li>
             
                 <li class="drawer-menu-item flex-center">
-                    <a class="active"
+                    <a class=""
                        href="/archives">ARCHIVES</a>
                 </li>
             
@@ -159,52 +159,222 @@
 
                 
                     <div class="fade-in-down-animation">
-    <div class="archive-container ">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">C++零碎知识点小记</span>
+        </div>
+
         
-<div class="archive-list-container">
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/comma.jpg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Comma</span>
+                        
+                            <span class="author-label">Lv1</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2021-11-29 22:40:39
+    </span>
     
-        <section class="archive-item">
-            <div class="archive-item-header">
-                <span class="archive-year">2021</span>
-                <span class="archive-year-post-count">[4]</span>
-            </div>
-            <ul class="article-list">
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2021/11/29/c-ling-sui-zhi-shi-dian-xiao-ji/"
-                        >C++零碎知识点小记</a>
-                        <span class="article-date">11-29</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2021/11/11/chang-shi-markdown-de-ji-chu-yu-fa/"
-                        >尝试Markdown的基础语法</a>
-                        <span class="article-date">11-11</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2021/11/06/wo-de-di-yi-pian-bo-ke/"
-                        >我的第一篇博客</a>
-                        <span class="article-date">11-06</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2021/11/05/hello-world/"
-                        >Hello World</a>
-                        <span class="article-date">11-05</span>
-                    </li>
-                
-            </ul>
-        </section>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>393 Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>1 Mins</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
     
 </div>
 
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h1 id="说点什么"><a href="#说点什么" class="headerlink" title="说点什么"></a>说点什么</h1><p>好久没更新博客了，不能闲置了。</p>
+<p>每次打代码，修BUG都会有一些小收获，于是我就打算在这里记录我每次学到的零碎知识点。</p>
+<p>本人表达能力有限，若有不当之处，欢迎指正。</p>
+<h1 id="11月29日小记"><a href="#11月29日小记" class="headerlink" title="11月29日小记"></a>11月29日小记</h1><p>今晚在写哈夫曼树的编码解码的时候，遇到了个问题。</p>
+<p>因为可能需要编码译码<strong>空格</strong>，而在C++中，空格通常会是个特殊的存在。</p>
+<p>在输入字符的时候，我选择了getline()函数获取一行输入。（dev能正常使用，vs则需要引用<string>库）</string></p>
+<p><em>以下是测试代码：</em></p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+using namespace std;
+int main(){
+	int n;
+	string str;
+	cin&gt;&gt;n;  //输入n个字符
+	getline(cin,str); //getline(infile,str); getline还能对文件进行读行操作
+	cout&lt;&lt;str[0]&lt;&lt;"."&lt;&lt;str[2]&lt;&lt;endl; 
+	cout&lt;&lt;str.length();
+	return 0;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p>这段代码运行后会发现getline()并没有获取输入文本。</p>
+<p>这是因为在C++中，使用cin读取数据后，再使用getline读字符串，发现缓冲区中还有endl，便进行读入操作，所以后面没能继续读入我们所需要的文本。</p>
+<p>解决方法：在两者之间加入<code>cin.ignore();</code>，这样就能清空缓冲区了。</p>
+<p><em>示例如下：</em></p>
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include &lt;iostream&gt;
+using namespace std;
+int main(){
+	int n;
+	string str;
+	cin&gt;&gt;n;  //输入n个字符
+    cin.ignore(); //清空缓冲区，防止getline读取endl
+	getline(cin,str);
+	cout&lt;&lt;str[0]&lt;&lt;"."&lt;&lt;str[2]&lt;&lt;endl; 
+	cout&lt;&lt;str.length();
+	return 0;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：C++零碎知识点小记</li>
+        <li>Post author：Comma</li>
+        <li>Create time：2021-11-29 22:40:39</li>
+        <li>
+            Post link：https://imcomma.top/2021/11/29/c-ling-sui-zhi-shi-dian-xiao-ji/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2021/11/11/chang-shi-markdown-de-ji-chu-yu-fa/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">尝试Markdown的基础语法</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;Comments</i>
+    </div>
+    
+
+        
+            
+    <div class="valine-container">
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script data-pjax>
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'oiiyMx4pX5CeLskUmTk6Ri5n-gzGzoHsz',
+                    appKey: '4RXkFG4qcpVXMp2oU23rzLKb',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: '😜 尽情吐槽吧~',
+					requiredFields: ['nick','mail'],
+                    lang: 'en'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+                        let author = 'Comma';
+
+                        if (author) {
+                            for (let vcard of vcards) {
+                                const vnick_dom = vcard.querySelector('.vhead .vnick');
+                                const vnick = vnick_dom.innerHTML;
+                                if (vnick === author) {
+                                    vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                                }
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('true') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
     </div>
 </div>
+
 
                 
             </div>
@@ -248,6 +418,27 @@
         </div>
     </div>
 
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
     
 
     <div class="right-bottom-side-tools">
@@ -294,6 +485,14 @@
 
     </div>
 
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%B4%E7%82%B9%E4%BB%80%E4%B9%88"><span class="nav-text">说点什么</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#11%E6%9C%8829%E6%97%A5%E5%B0%8F%E8%AE%B0"><span class="nav-text">11月29日小记</span></a></li></ol>
+    </div>
+</div>
+        </aside>
     
 
     <div class="image-viewer-container">
@@ -347,6 +546,8 @@
 
 
 <div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/toc.js"></script>
     
 </div>
 
