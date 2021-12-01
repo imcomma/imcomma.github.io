@@ -21,7 +21,7 @@
     <script id="hexo-configurations">
     let KEEP = window.KEEP || {};
     KEEP.hexo_config = {"hostname":"imcomma.top","root":"/","language":"en","path":"search.json"};
-    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"/images/comma.jpg","favicon":"/images/comma.jpg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"mac"},"pjax":{"enable":true},"lazyload":{"enable":false},"version":"3.4.3"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"/images/comma.jpg","favicon":"/images/comma.jpg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":false},"version":"3.4.3"};
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
   </script>
 <meta name="generator" content="Hexo 5.4.0">
@@ -199,7 +199,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>591 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>590 Words</span>
         </span>
     
     
@@ -274,12 +274,7 @@
 <p><code>单行代码</code></p>
 <h4 id="多行代码"><a href="#多行代码" class="headerlink" title="多行代码"></a>多行代码</h4><p>使用两个标记符```包裹代码。</p>
 <p>例：</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
-using namespace std;
-int main(){
-    cout&lt;&lt;"Hello, Comma's Blog~"&lt;&lt;endl;
-    return 0;
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line">    cout&lt;&lt;<span class="string">"Hello, Comma's Blog~"</span>&lt;&lt;endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 
 
@@ -293,12 +288,7 @@ int main(){
 <p><code>~~这是删除线~~</code></p>
 <p>效果：</p>
 <p><del>这是删除线</del></p>
-<h3 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h3><pre class="line-numbers language-none"><code class="language-none">ColName1 | ColName2 | ColName3
----------|----------|---------
-ColValue | ColValue | ColValue
-ColValue | ColValue | ColValue
-ColValue | ColValue | ColValue
-ColValue | ColValue | ColValue<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ColName1 | ColName2 | ColName3</span><br><span class="line">---------|----------|---------</span><br><span class="line">ColValue | ColValue | ColValue</span><br><span class="line">ColValue | ColValue | ColValue</span><br><span class="line">ColValue | ColValue | ColValue</span><br><span class="line">ColValue | ColValue | ColValue</span><br></pre></td></tr></tbody></table></figure>
 
 <p>效果：</p>
 <table>
@@ -331,12 +321,7 @@ ColValue | ColValue | ColValue<span aria-hidden="true" class="line-numbers-rows"
 </tr>
 </tbody></table>
 <p>左对齐 居中对齐 右对齐</p>
-<pre class="line-numbers language-none"><code class="language-none">|ColName1 | ColName2 | ColName3|
-|---------|:--------:|--------:|
-|ColValue | ColValue | ColValue|
-|ColValue | ColValue | ColValue|
-|ColValue | ColValue | ColValue|
-|ColValue | ColValue | ColValue|<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">|ColName1 | ColName2 | ColName3|</span><br><span class="line">|---------|:--------:|--------:|</span><br><span class="line">|ColValue | ColValue | ColValue|</span><br><span class="line">|ColValue | ColValue | ColValue|</span><br><span class="line">|ColValue | ColValue | ColValue|</span><br><span class="line">|ColValue | ColValue | ColValue|</span><br></pre></td></tr></tbody></table></figure>
 
 <p>效果：</p>
 <table>

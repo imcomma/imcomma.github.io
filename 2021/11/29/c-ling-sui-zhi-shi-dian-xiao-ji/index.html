@@ -21,7 +21,7 @@
     <script id="hexo-configurations">
     let KEEP = window.KEEP || {};
     KEEP.hexo_config = {"hostname":"imcomma.top","root":"/","language":"en","path":"search.json"};
-    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"/images/comma.jpg","favicon":"/images/comma.jpg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"mac"},"pjax":{"enable":true},"lazyload":{"enable":false},"version":"3.4.3"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"/images/comma.jpg","favicon":"/images/comma.jpg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":false},"version":"3.4.3"};
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
   </script>
 <meta name="generator" content="Hexo 5.4.0">
@@ -188,7 +188,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>393 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>395 Words</span>
         </span>
     
     
@@ -214,38 +214,15 @@
 <p>本人表达能力有限，若有不当之处，欢迎指正。</p>
 <h1 id="11月29日小记"><a href="#11月29日小记" class="headerlink" title="11月29日小记"></a>11月29日小记</h1><p>今晚在写哈夫曼树的编码解码的时候，遇到了个问题。</p>
 <p>因为可能需要编码译码<strong>空格</strong>，而在C++中，空格通常会是个特殊的存在。</p>
-<p>在输入字符的时候，我选择了getline()函数获取一行输入。（dev能正常使用，vs则需要引用<string>库）</string></p>
+<p>在输入字符的时候，我选择了getline()函数获取一行输入。（dev能直接使用，vs则需要引用<string>库）</string></p>
 <p><em>以下是测试代码：</em></p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
-using namespace std;
-int main(){
-	int n;
-	string str;
-	cin&gt;&gt;n;  //输入n个字符
-	getline(cin,str); //getline(infile,str); getline还能对文件进行读行操作
-	cout&lt;&lt;str[0]&lt;&lt;"."&lt;&lt;str[2]&lt;&lt;endl; 
-	cout&lt;&lt;str.length();
-	return 0;
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	string str;</span><br><span class="line">	cin&gt;&gt;n;  <span class="comment">//输入n个字符</span></span><br><span class="line">	<span class="built_in">getline</span>(cin,str); <span class="comment">//getline(infile,str); getline还能对文件进行读行操作</span></span><br><span class="line">	cout&lt;&lt;str[<span class="number">0</span>]&lt;&lt;<span class="string">"."</span>&lt;&lt;str[<span class="number">2</span>]&lt;&lt;endl; </span><br><span class="line">	cout&lt;&lt;str.<span class="built_in">length</span>();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 <p>这段代码运行后会发现getline()并没有获取输入文本。</p>
 <p>这是因为在C++中，使用cin读取数据后，再使用getline读字符串，发现缓冲区中还有endl，便进行读入操作，所以后面没能继续读入我们所需要的文本。</p>
 <p>解决方法：在两者之间加入<code>cin.ignore();</code>，这样就能清空缓冲区了。</p>
 <p><em>示例如下：</em></p>
-<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include &lt;iostream&gt;
-using namespace std;
-int main(){
-	int n;
-	string str;
-	cin&gt;&gt;n;  //输入n个字符
-    cin.ignore(); //清空缓冲区，防止getline读取endl
-	getline(cin,str);
-	cout&lt;&lt;str[0]&lt;&lt;"."&lt;&lt;str[2]&lt;&lt;endl; 
-	cout&lt;&lt;str.length();
-	return 0;
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	string str;</span><br><span class="line">	cin&gt;&gt;n;  <span class="comment">//输入n个字符</span></span><br><span class="line">    cin.<span class="built_in">ignore</span>(); <span class="comment">//清空缓冲区，防止getline读取endl</span></span><br><span class="line">	<span class="built_in">getline</span>(cin,str);</span><br><span class="line">	cout&lt;&lt;str[<span class="number">0</span>]&lt;&lt;<span class="string">"."</span>&lt;&lt;str[<span class="number">2</span>]&lt;&lt;endl; </span><br><span class="line">	cout&lt;&lt;str.<span class="built_in">length</span>();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 
         </div>
